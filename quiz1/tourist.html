@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tourism :: Robin Hannan</title>
+        <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&amp;family=Source+Sans+Pro:wght@400;700&amp;display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+        />
+        <link rel="stylesheet" href="../css/style.css" />
+        <style>
+            img {
+                border-radius: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <div
+            id="particles-js"
+            style="position: absolute; height: 100%; width: 100%"
+        ></div>
+        <div class="centered">
+            <div class="margin">
+                <img
+                    id="box"
+                    alt="Air Asia"
+                    class="pfp vignette"
+                    src="https://www.bworldonline.com/wp-content/uploads/2023/04/Air-Asia-1.jpg"
+                    style="object-fit: cover"
+                />
+                <h1 style="margin: -1px">Tourism</h1>
+                <a href="../index.html" class="link"
+                    ><i
+                        style="color: rgb(0, 213, 255)"
+                        class="bi bi-house-door-fill"
+                    ></i
+                ></a>
+                <a href="./profile.html" class="link">Profile</a>
+                <a href="./hometown.html" class="link">Hometown</a>
+                <a href="./food.html" class="link">Cuisine</a>
+                <a href="./tourist.html" class="link">Tourism</a>
+                <div
+                    style="
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;
+                    "
+                >
+                    <div style="display: flex">
+                        <img
+                            alt="Fort De Kock"
+                            src="https://fastly.4sqi.net/img/general/200x200/3436203_nVKkAVtBD_0kiSqfyV4KpSSjUXV_-bpL_FtZw3vz_LY.jpg"
+                            style="width: 200px; height: 200px; margin: auto"
+                            class="animate__animated animate__fadeInBottomLeft animate__slow"
+                        />
+                    </div>
+                    <div style="display: flex">
+                        <p
+                            style="
+                                margin: auto;
+                                padding-top: 12px;
+                                margin-right: 24px;
+                                margin-left: 24px;
+                            "
+                        >
+                            There are many
+                            <a
+                                href="https://www.tripadvisor.co.id/Attractions-g297723-Activities-Bukittinggi_West_Sumatra_Sumatra.html"
+                                target="_blank"
+                                >attractions in Bukittinggi
+                                <i
+                                    style="
+                                        font-size: 10px;
+                                        vertical-align: middle;
+                                    "
+                                    class="bi bi-arrow-up-right-square"
+                                ></i></a
+                            >, such as the Fort De Kock, the house of the first
+                            Vice President of Indonesia, Jam Gadang, and the
+                            Sianok Canyon. Most of these attractions can be
+                            attributed to the Dutch colonial era. They're mostly
+                            free to enter and are very popular among tourists.
+                        </p>
+                    </div>
+                    <div style="display: flex">
+                        <img
+                            alt="Bung Hatta's house"
+                            src="https://i.pinimg.com/originals/c6/58/0b/c6580ba1bd868f590ca04a91fb0f3bb5.png"
+                            style="width: 200px; height: 200px; margin: auto"
+                            class="animate__animated animate__fadeInBottomRight animate__slow"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </body>
+    <script src="../js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        const burst = new mojs.Burst({
+            left: 0,
+            top: 0,
+            radius: { 4: 19 },
+            angle: 45,
+            children: {
+                shape: "line",
+                radius: 3,
+                scale: 1,
+                stroke: "#FD7932",
+                strokeDasharray: "100%",
+                strokeDashoffset: { "-100%": "100%" },
+                duration: 700,
+                easing: "quad.out",
+            },
+        });
+
+        document.addEventListener("click", function (e) {
+            burst.tune({ x: e.pageX, y: e.pageY }).replay();
+        });
+
+        const box = document.getElementById("box");
+        let positionY = 0; // Initial position
+        let velocityY = 0; // Initial velocity
+        const gravity = 0.6; // Gravity force
+        const dampingFactor = 0.75; // Damping factor for the bounce effect
+
+        box.addEventListener("click", () => {
+            const windowHeight = window.innerHeight;
+            const boxHeight = box.clientHeight;
+
+            const animation = setInterval(() => {
+                velocityY += gravity; // Update velocity with gravity
+                positionY += velocityY; // Update position with velocity
+
+                // Check for collision with the bottom of the window
+                if (positionY >= windowHeight - boxHeight) {
+                    positionY = windowHeight - boxHeight; // Set position at the bottom
+                    velocityY = -velocityY * dampingFactor; // Reverse and dampen velocity
+                }
+
+                // Check for collision with the top of the window
+                if (positionY <= 0) {
+                    positionY = 0; // Set position at the top
+                    velocityY = -velocityY * dampingFactor; // Reverse and dampen velocity
+                }
+
+                // Apply position to the box
+                box.style.transform = `translateY(${positionY}px)`;
+            }, 16);
+        });
+
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 355,
+                    density: {
+                        enable: true,
+                        value_area: 789.1476416322727,
+                    },
+                },
+                color: {
+                    value: "#ffffff",
+                },
+                shape: {
+                    type: "circle",
+                    stroke: {
+                        width: 0,
+                        color: "#000000",
+                    },
+                    polygon: {
+                        nb_sides: 5,
+                    },
+                    image: {
+                        src: "img/github.svg",
+                        width: 100,
+                        height: 100,
+                    },
+                },
+                opacity: {
+                    value: 0.48927153781200905,
+                    random: false,
+                    anim: {
+                        enable: true,
+                        speed: 0.2,
+                        opacity_min: 0,
+                        sync: false,
+                    },
+                },
+                size: {
+                    value: 2,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0,
+                        sync: false,
+                    },
+                },
+                line_linked: {
+                    enable: false,
+                    distance: 150,
+                    color: "#ffffff",
+                    opacity: 0.4,
+                    width: 1,
+                },
+                move: {
+                    enable: true,
+                    speed: 0.6,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200,
+                    },
+                },
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "bubble",
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push",
+                    },
+                    resize: true,
+                },
+                modes: {
+                    grab: {
+                        distance: 400,
+                        line_linked: {
+                            opacity: 1,
+                        },
+                    },
+                    bubble: {
+                        distance: 83.91608391608392,
+                        size: 1,
+                        duration: 3,
+                        opacity: 1,
+                        speed: 3,
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4,
+                    },
+                    push: {
+                        particles_nb: 1,
+                    },
+                    remove: {
+                        particles_nb: 2,
+                    },
+                },
+            },
+            retina_detect: true,
+        });
+    </script>
+</html>

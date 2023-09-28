@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hometown :: Robin Hannan</title>
+        <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&amp;family=Source+Sans+Pro:wght@400;700&amp;display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+        />
+        <link rel="stylesheet" href="../css/style.css" />
+        <style>
+            img {
+                border-radius: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <div
+            id="particles-js"
+            style="position: absolute; height: 100%; width: 100%"
+        ></div>
+        <div class="centered">
+            <div class="margin">
+                <img
+                    id="box"
+                    alt="Bukittinggi map"
+                    class="pfp vignette"
+                    src="https://i.imgur.com/x2KrqqP.jpeg"
+                    height="200px"
+                    width="200px"
+                />
+                <h1 style="margin: -1px">Hometown</h1>
+                <a href="../index.html" class="link"
+                    ><i
+                        style="color: rgb(0, 213, 255)"
+                        class="bi bi-house-door-fill"
+                    ></i
+                ></a>
+                <a href="./profile.html" class="link">Profile</a>
+                <a href="./hometown.html" class="link">Hometown</a>
+                <a href="./food.html" class="link">Cuisine</a>
+                <a href="./tourist.html" class="link">Tourism</a>
+                <div
+                    style="
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;
+                    "
+                >
+                    <div style="display: flex">
+                        <img
+                            alt="Jam Gadang"
+                            src="https://cdn0-production-images-kly.akamaized.net/CtBclanGfLI_7JNk2mx9LzJwBv8=/1200x1200/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/3158827/original/006140400_1592791294-rumah-gadang-4914211_1280.jpg"
+                            style="width: 200px; height: 200px; margin: auto"
+                            class="animate__animated animate__fadeInBottomLeft animate__slow"
+                        />
+                    </div>
+                    <div style="display: flex">
+                        <p
+                            style="
+                                margin: auto;
+                                padding-top: 12px;
+                                margin-right: 24px;
+                                margin-left: 24px;
+                            "
+                        >
+                            <a
+                                href="https://en.wikipedia.org/wiki/Bukittinggi"
+                                target="_blank"
+                                >Bukittinggi
+                                <i
+                                    style="
+                                        font-size: 10px;
+                                        vertical-align: middle;
+                                    "
+                                    class="bi bi-arrow-up-right-square"
+                                ></i></a
+                            >is the third largest city in West Sumatra,
+                            Indonesia. It is in the Minangkabau Highlands, 90 km
+                            by road from the West Sumatran capital city of
+                            Padang. Bukittinggi used to be known as Fort de Kock
+                            and was once dubbed <i>'Parijs van Sumatera'</i>. It
+                            also used to be a centre of government at the time
+                            of the Dutch East Indies.
+                        </p>
+                    </div>
+                    <div style="display: flex">
+                        <img
+                            alt="Ngarai Sianok"
+                            src="https://awsimages.detik.net.id/community/media/visual/2022/04/15/pesona-ngarai-sianok-pahatan-indah-di-bukittinggi-4_11.jpeg"
+                            style="width: 200px; height: 200px; margin: auto"
+                            class="animate__animated animate__fadeInBottomRight animate__slow"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </body>
+    <script src="../js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        const burst = new mojs.Burst({
+            left: 0,
+            top: 0,
+            radius: { 4: 19 },
+            angle: 45,
+            children: {
+                shape: "line",
+                radius: 3,
+                scale: 1,
+                stroke: "#FD7932",
+                strokeDasharray: "100%",
+                strokeDashoffset: { "-100%": "100%" },
+                duration: 700,
+                easing: "quad.out",
+            },
+        });
+
+        document.addEventListener("click", function (e) {
+            burst.tune({ x: e.pageX, y: e.pageY }).replay();
+        });
+
+        const box = document.getElementById("box");
+        let positionY = 0; // Initial position
+        let velocityY = 0; // Initial velocity
+        const gravity = 0.6; // Gravity force
+        const dampingFactor = 0.75; // Damping factor for the bounce effect
+
+        box.addEventListener("click", () => {
+            const windowHeight = window.innerHeight;
+            const boxHeight = box.clientHeight;
+
+            const animation = setInterval(() => {
+                velocityY += gravity; // Update velocity with gravity
+                positionY += velocityY; // Update position with velocity
+
+                // Check for collision with the bottom of the window
+                if (positionY >= windowHeight - boxHeight) {
+                    positionY = windowHeight - boxHeight; // Set position at the bottom
+                    velocityY = -velocityY * dampingFactor; // Reverse and dampen velocity
+                }
+
+                // Check for collision with the top of the window
+                if (positionY <= 0) {
+                    positionY = 0; // Set position at the top
+                    velocityY = -velocityY * dampingFactor; // Reverse and dampen velocity
+                }
+
+                // Apply position to the box
+                box.style.transform = `translateY(${positionY}px)`;
+            }, 16);
+        });
+
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 355,
+                    density: {
+                        enable: true,
+                        value_area: 789.1476416322727,
+                    },
+                },
+                color: {
+                    value: "#ffffff",
+                },
+                shape: {
+                    type: "circle",
+                    stroke: {
+                        width: 0,
+                        color: "#000000",
+                    },
+                    polygon: {
+                        nb_sides: 5,
+                    },
+                    image: {
+                        src: "img/github.svg",
+                        width: 100,
+                        height: 100,
+                    },
+                },
+                opacity: {
+                    value: 0.48927153781200905,
+                    random: false,
+                    anim: {
+                        enable: true,
+                        speed: 0.2,
+                        opacity_min: 0,
+                        sync: false,
+                    },
+                },
+                size: {
+                    value: 2,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0,
+                        sync: false,
+                    },
+                },
+                line_linked: {
+                    enable: false,
+                    distance: 150,
+                    color: "#ffffff",
+                    opacity: 0.4,
+                    width: 1,
+                },
+                move: {
+                    enable: true,
+                    speed: 0.6,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200,
+                    },
+                },
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "bubble",
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push",
+                    },
+                    resize: true,
+                },
+                modes: {
+                    grab: {
+                        distance: 400,
+                        line_linked: {
+                            opacity: 1,
+                        },
+                    },
+                    bubble: {
+                        distance: 83.91608391608392,
+                        size: 1,
+                        duration: 3,
+                        opacity: 1,
+                        speed: 3,
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4,
+                    },
+                    push: {
+                        particles_nb: 1,
+                    },
+                    remove: {
+                        particles_nb: 2,
+                    },
+                },
+            },
+            retina_detect: true,
+        });
+    </script>
+</html>
